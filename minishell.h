@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:34:55 by mskhairi          #+#    #+#             */
-/*   Updated: 2024/08/04 17:18:55 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:26:41 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,9 +146,5 @@ void					ft_clear_cmd_lst(t_simple_cmd **lst);
 int						dup_and_close(t_simple_cmd *cmd);
 int						close_all_fds(t_simple_cmd *cmd);
 void					print_error(char *cmd, char *error);
-// testing
-void					print_list(t_item *head);
-void					print(char **str);
-void					print_cmds(t_simple_cmd *cmd);
-void					print_cmd(t_simple_cmd *cmd);
+
 #endif

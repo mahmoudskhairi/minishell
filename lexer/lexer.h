@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 19:56:11 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/03 17:08:35 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:25:41 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,4 @@ int		check_pipes(t_item **lst, t_item	*tmp);
 int		is_alone(t_item *lst);
 void	reset_tokens(t_item *list);
 
-// testing
-
-void	print_list(t_item *head);
 #endif
