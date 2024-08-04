@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:29:16 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/03 18:00:34 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:17:32 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ bool	get_key_and_value(char *env, char **key, char **value)
 }
 
 t_env	*env_list(char **env)
-	//make new env list based on the the parent bash env
 {
 	int		i;
 	t_env	*head;
@@ -49,7 +48,7 @@ t_env	*env_list(char **env)
 	return (head);
 }
 
-int	mini_env(t_data *data) // implement env command
+int	mini_env(t_data *data)
 {
 	t_env	*tmp;
 

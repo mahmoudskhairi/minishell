@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:40:06 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/03 17:48:05 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:10:18 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	array_len(t_cmd_limits *cmd)
 
 	len = 0;
 	tmp = cmd->start;
-	while (tmp != cmd->end->next) //must check last limit aka end not end->next
+	while (tmp != cmd->end->next)
 	{
 		if (tmp->type == WORD)
 			len++;
@@ -28,7 +28,7 @@ int	array_len(t_cmd_limits *cmd)
 	return (len);
 }
 
-char	**set_cmd_arr(t_cmd_limits *cmd) //cmd array aka command and its options
+char	**set_cmd_arr(t_cmd_limits *cmd)
 {
 	int		i;
 	int		len;
@@ -39,11 +39,10 @@ char	**set_cmd_arr(t_cmd_limits *cmd) //cmd array aka command and its options
 	len = 0;
 	tmp = cmd->start;
 	len = array_len(cmd);
-	// printf("len = %d\n", len);
-	cmd_array = (char **)malloc(sizeof(char *) * (len + 1)); // malloc
+	cmd_array = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!cmd_array)
 		return (NULL);
-	while (tmp != cmd->end->next) // same as above
+	while (tmp != cmd->end->next)
 	{
 		if (tmp->type == WORD)
 			cmd_array[i++] = ft_strdup(tmp->content);
@@ -53,14 +52,14 @@ char	**set_cmd_arr(t_cmd_limits *cmd) //cmd array aka command and its options
 	return (cmd_array);
 }
 
-int	check_redir(t_cmd_limits *cmd) //nbr of type
+int	check_redir(t_cmd_limits *cmd)
 {
 	int		i;
 	t_item	*tmp;
 
 	i = 0;
 	tmp = cmd->start;
-	while (tmp != cmd->end->next) //must check last limit aka end not end->next
+	while (tmp != cmd->end->next)
 	{
 		if (tmp->type == REDIR_IN_FILE || tmp->type == HERE_DOC_LIMITER
 			|| tmp->type == REDIR_OUT_FILE || tmp->type == DREDIR_OUT_FILE)
@@ -89,11 +88,9 @@ t_redir	*set_redirs(t_cmd_limits *cmd, int num)
 			redir[i].type = tmp->type;
 			redir[i].fd = -1;
 			redir[i++].path_or_limiter = ft_strdup(tmp->content);
-			// printf("----> %s\n", redir[i - 1].path_or_limiter);
 		}
 		tmp = tmp->next;
 	}
-	// printf("number of redirs filled = %d\n", i);
 	return (redir);
 }
 
@@ -104,11 +101,11 @@ void	set_pipe_flag(t_simple_cmd *head, int cmd_nbr)
 	while (head)
 	{
 		if (head->i == 0)
-			head->pipe_flag = BEFORE_PIPE; // command is before pipe
+			head->pipe_flag = BEFORE_PIPE;
 		else if (head->i == cmd_nbr - 1)
-			head->pipe_flag = AFTER_PIPE; // command is after pipe
+			head->pipe_flag = AFTER_PIPE;
 		else
-			head->pipe_flag = BETWEEN_PIPES; //command is between pipes
+			head->pipe_flag = BETWEEN_PIPES;
 		head = head->next;
 	}
 }

@@ -6,13 +6,12 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:21 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/03 17:53:34 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:58:13 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-// pwd buitin implementation
 extern int	g_exit_status;
 
 int	mini_pwd(void)

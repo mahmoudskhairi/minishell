@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser_cleaner.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:08:33 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 13:35:33 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:56:56 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-
-// clean simple command ---------------------------------
 
 void	ft_free_redir(t_redir *redir, int num)
 {
@@ -51,7 +49,6 @@ void	ft_clear_cmd_lst(t_simple_cmd **lst)
 	}
 }
 
-// clean command limits------------------------------
 void	ft_clear_limits(t_cmd_limits **lst)
 {
 	t_cmd_limits	*current;

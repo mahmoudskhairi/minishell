@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 12:25:36 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/03 17:44:44 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:39:05 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void			set_pipe_flag(t_simple_cmd *head, int cmd_nbr);
 void			add_back_simple_cmd(t_simple_cmd **lst, t_simple_cmd *new);
 t_simple_cmd	*last_cmd(t_simple_cmd *lst);
 
-// for testing
+// for testing 
 void			print_lst(t_cmd_limits *lst);
 void			print(char **str);
 void			print_cmd(t_simple_cmd *cmd);

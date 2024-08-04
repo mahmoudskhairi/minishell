@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:33:23 by mskhairi          #+#    #+#             */
-/*   Updated: 2024/08/04 14:54:11 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:50:05 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	handle_sigint(int signal)
 
 int	check_empty_input(char *prompt)
 {
-	if (!prompt) //is modefied!!
+	if (!prompt)
 	{
 		free(prompt);
 		printf("exit\n");
@@ -53,7 +53,7 @@ int	main(int ac, char **av, char **env)
 	g_exit_status = 0;
 	data.env_l = env_list(env);
 	signal(SIGINT, handle_sigint);
-	signal(SIGQUIT, SIG_IGN);//signal(SIGQUIT, SIG_DFL); in child proccesses
+	signal(SIGQUIT, SIG_IGN);
 	while (1)
 	{
 		tmp = readline("minihell-3.2$ ");
@@ -73,7 +73,6 @@ int	main(int ac, char **av, char **env)
 
 int	handle_prompt(t_data *data)
 {
-	//check_builin(data->prompt); // check in command name for every command
 	data->token_lst = lexer(data->prompt);
 	free(data->prompt);
 	if (!data->token_lst)

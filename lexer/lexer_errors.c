@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:25:21 by mskhairi          #+#    #+#             */
-/*   Updated: 2024/08/03 17:16:01 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 15:57:53 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	lexer_errors(t_item **lst)
 	{
 		ft_print_error();
 		g_exit_status = 258;
-		return (1); // there is an error;
+		return (1);
 	}
 	return (0);
 }

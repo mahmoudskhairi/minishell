@@ -3,17 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
+#    By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 14:50:47 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/08/04 14:56:37 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/08/04 16:45:18 by mskhairi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror 
-# CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
-# LIBS = -Llibft -lft -lreadline -L/goinfre/mskhairi/homebrew/opt/readline/lib -I/goinfre/mskhairi/homebrew/opt/readline/include -lncurses
 LIBS = -lreadline -L ~/goinfre/homebrew/opt/readline/lib -I ~/goinfre/homebrew/opt/readline/include
 LIBFT = ./Libft/libft.a
 LEXER_DIR=lexer/
@@ -21,7 +19,6 @@ S_LEXER= $(addprefix $(LEXER_DIR), 	\
 									ft_lexer.c\
 									ft_item.c\
 									tokenization_utils.c \
-									testing_print.c \
 									ft_state.c \
 									lexer_cleaner.c\
 									lexer_errors.c\
@@ -37,7 +34,6 @@ S_PARSER= $(addprefix $(PARSER_DIR), 	\
 										ft_command_utils.c\
 										ft_command.c\
 										organize.c\
-										testing.c\
 										expander.c\
 										parser_cleaner.c\
 									)
@@ -77,7 +73,7 @@ $(NAME): $(O_LEXER) $(O_PARSER) $(O_BUILTIN) $(O_EXECUTION) $(NAME).o
 	make -C Libft
 	$(CC) $(CFLAGS) $(NAME).o $(LIBFT) $(O_LEXER) $(O_PARSER) $(O_BUILTIN) $(O_EXECUTION)  $(LIBS) -o $(NAME)
 
-%.o:%.c
+%.o:%.c minishell.h builtin/builtin.h lexer/lexer.h parser/parser.h execution/execution.h
 	$(CC) -c $(CFLAGS) $< -o $@ -I ~/goinfre/homebrew/opt/readline/include
 clean:
 	make fclean -C Libft

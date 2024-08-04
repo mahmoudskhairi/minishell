@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:05:09 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 14:55:46 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:50:41 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	execute_cmd(t_simple_cmd *cmd, t_data *data)
 	if (!cmd->next && check_builtin(cmd->cmd_name))
 	{
 		flag = true;
-		handle_here_doc(cmd);
 		handle_redirections(cmd);
 		builtin_cmd(cmd, data, check_builtin(cmd->cmd_name), flag);
 		return (0);

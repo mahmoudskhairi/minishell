@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_cd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:37 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 14:52:13 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:17:20 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	get_home_env(t_env *env_l)
 int	mini_cd(t_env *env, char **cmd)
 {
 	char	*current_dir;
-	
 
 	current_dir = getcwd(NULL, 0);
 	if (!current_dir)

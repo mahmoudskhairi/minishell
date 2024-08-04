@@ -6,13 +6,11 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:37:20 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 11:58:16 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:11:04 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-
-// create another linked list with expander values and removed of quotations
 
 int	join_limiter(int type, int state)
 {
@@ -36,7 +34,6 @@ int	check_dol_join(t_item *list, int flag)
 				&& list->type != QOUTE && list->type != DOUBLE_QUOTE)
 			|| (!ft_strcmp(list->content, "")))
 			return (0);
-		
 	}
 	return (1);
 }
@@ -46,7 +43,6 @@ void	handle_list(t_item *list, t_item **new_list, int *type,
 {
 	while (list)
 	{
-
 		if (!check_dol_join(list, 0))
 		{
 			list = list->next;
@@ -70,23 +66,11 @@ void	handle_list(t_item *list, t_item **new_list, int *type,
 	}
 }
 
-// void	ft_new_list(t_item *list, t_item **new_list)
-// {
-// 	char	*join_content;
-// 	int		type;
-
-// 	join_content = NULL;
-// 	type = WORD;
-// 	handle_list(list, new_list, &type, join_content);
-// }
-
-// void	last_tokinization(t_item *list, int *flag)
 void	last_tokinization(t_item *list)
 {
 	t_item	*tmp;
 
 	tmp = list;
-	// if (tmp)
 	while (tmp)
 	{
 		if (tmp->type == REDIR_IN && tmp->next)
