@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:35:47 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 13:39:35 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:13:09 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	execute_builtin(t_simple_cmd *builtin, t_data *data, int flag)
 	if (flag == 4)
 		mini_unset(&data->env_l, builtin->cmd);
 	if (flag == 5)
-		mini_export(builtin, data);
+		mini_export(builtin, data, 0, 0);
 	if (flag == 6)
 		mini_cd(data->env_l, builtin->cmd);
 	if (flag == 7)

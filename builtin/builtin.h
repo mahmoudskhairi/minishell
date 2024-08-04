@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:26:58 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/03 18:03:01 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:12:41 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int		mini_env(t_data *data);
 bool	get_key_and_value(char *env, char **key, char **value);
 int		mini_unset(t_env **env_l, char **cmd);
-int		mini_export(t_simple_cmd *export, t_data *data);
+int		mini_export(t_simple_cmd *export, t_data *data, bool flag, bool value_flag);
 int		mini_echo(char **cmd);
 int		mini_pwd(void);
 int		mini_cd(t_env *env, char **cmd);
