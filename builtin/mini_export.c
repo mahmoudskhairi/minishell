@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_export.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:02 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 17:14:58 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:21:57 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	is_exist(t_data *data, char *key, char *value, bool value_flag)
 
 int	check_key(char *arg, bool *flag)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!arg || arg[i] == '\0')

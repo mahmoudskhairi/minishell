@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:34:55 by mskhairi          #+#    #+#             */
-/*   Updated: 2024/08/04 17:18:12 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:18:55 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,6 @@ void					builtin_cmd(t_simple_cmd *builtin, t_data *data,
 int						check_builtin(char *str);
 int						is_whitespace(char c);
 int						mini_env(t_data *data);
-
-/*-cleaning prototypes------------------------*/
 
 void					ft_clear_items(t_item **lst);
 void					ft_clear_limits(t_cmd_limits **lst);

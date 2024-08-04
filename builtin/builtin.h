@@ -18,7 +18,8 @@
 int		mini_env(t_data *data);
 bool	get_key_and_value(char *env, char **key, char **value);
 int		mini_unset(t_env **env_l, char **cmd);
-int		mini_export(t_simple_cmd *export, t_data *data, bool flag, bool value_flag);
+int		mini_export(t_simple_cmd *export, t_data *data, bool flag,
+			bool value_flag);
 int		mini_echo(char **cmd);
 int		mini_pwd(void);
 int		mini_cd(t_env *env, char **cmd);

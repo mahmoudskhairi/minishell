@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:35:47 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 17:19:04 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:22:26 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	execute_builtin(t_simple_cmd *builtin, t_data *data, int flag)
 	if (flag == 7)
 		mini_exit(builtin->cmd);
 	return (0);
-} 
+}
 
 void	builtin_cmd(t_simple_cmd *builtin, t_data *data, int flag, bool one_cmd)
 {
