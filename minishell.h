@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:34:55 by mskhairi          #+#    #+#             */
-/*   Updated: 2024/08/04 16:51:39 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:18:12 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,10 @@ t_env					*env_list(char **env); //env list
 void					builtin_cmd(t_simple_cmd *builtin, t_data *data,
 							int flag, bool one_cmd);
 int						check_builtin(char *str);
+int						is_whitespace(char c);
+int						mini_env(t_data *data);
+
+/*-cleaning prototypes------------------------*/
 
 void					ft_clear_items(t_item **lst);
 void					ft_clear_limits(t_cmd_limits **lst);
@@ -143,10 +147,10 @@ void					ft_clear_cmd_lst(t_simple_cmd **lst);
 
 int						dup_and_close(t_simple_cmd *cmd);
 int						close_all_fds(t_simple_cmd *cmd);
+void					print_error(char *cmd, char *error);
+// testing
 void					print_list(t_item *head);
 void					print(char **str);
 void					print_cmds(t_simple_cmd *cmd);
 void					print_cmd(t_simple_cmd *cmd);
-int						mini_env(t_data *data);
-int						is_whitespace(char c);
 #endif

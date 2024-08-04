@@ -6,19 +6,44 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:05:09 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 16:50:41 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:19:54 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-extern int g_exit_status;
-int	_execute(t_simple_cmd *cmd, t_data *data)// child process
+extern int	g_exit_status;
+
+char	*cmd_exist(char *cmd, char *cmd_name, char **path)
 {
-	char *error_str;
-	char **path;
-	char **env;
-	
+	bool	is_path;
+	char	*full_path;
+
+	is_path = false;
+	if (!path)
+		return (NULL);
+	if (cmd && !ft_strchr(cmd, '/'))
+	{
+		full_path = check_full_path(cmd, path);
+		if (full_path)
+			return (full_path);
+	}
+	else
+	{
+		is_path = true;
+		if (is_valid(cmd) == 1)
+			return (cmd);
+	}
+	handle_errors(cmd_name, is_path);
+	return (NULL);
+}
+
+int	_execute(t_simple_cmd *cmd, t_data *data)
+{
+	char	*error_str;
+	char	**path;
+	char	**env;
+
 	error_str = NULL;
 	env = list_to_arr(data->env_l);
 	path = get_path_env(data->env_l);
@@ -32,15 +57,15 @@ int	_execute(t_simple_cmd *cmd, t_data *data)// child process
 
 int	handle_cmd(t_simple_cmd *cmd, t_data *data, int *fork_pid)
 {
-	int pid;
+	int	pid;
 
-	signal (SIGINT, SIG_IGN);
+	signal(SIGINT, SIG_IGN);
 	pid = fork();
 	if (!pid)
 	{
 		signal(SIGQUIT, SIG_DFL);
 		signal(SIGINT, SIG_DFL);
-		handle_redirections(cmd);// open
+		handle_redirections(cmd);
 		if (check_builtin(cmd->cmd_name))
 			builtin_cmd(cmd, data, check_builtin(cmd->cmd_name), false);
 		else
@@ -58,20 +83,31 @@ int	handle_cmd(t_simple_cmd *cmd, t_data *data, int *fork_pid)
 	return (0);
 }
 
+void	cmd_signals(t_data *data, int *state)
+{
+	int	i;
+
+	i = 0;
+	while (waitpid(data->fork_pid[i++], state, 0) > 0 && i < data->cmd_nbr)
+		;
+	if (WIFSIGNALED(*state))
+		g_exit_status = WTERMSIG(*state) + 128;
+	else if (WIFEXITED(*state))
+		g_exit_status = WEXITSTATUS(*state);
+	signal(SIGINT, handle_sigint);
+}
+
 int	execute_cmd(t_simple_cmd *cmd, t_data *data)
 {
-	int i;
-	int state;
+	int		i;
+	int		state;
 	bool	flag;
 
 	i = 0;
 	flag = false;
-	data->fork_pid = malloc(data->cmd_nbr * sizeof(int));// must be freed
+	data->fork_pid = malloc(data->cmd_nbr * sizeof(int));
 	if (handle_all_heredocs(cmd, &state))
-	{
-		g_exit_status = EXIT_FAILURE;
-		return (1);
-	}
+		return (g_exit_status = EXIT_FAILURE, 1);
 	if (!cmd->next && check_builtin(cmd->cmd_name))
 	{
 		flag = true;
@@ -85,13 +121,6 @@ int	execute_cmd(t_simple_cmd *cmd, t_data *data)
 		handle_cmd(cmd, data, &data->fork_pid[i++]);
 		cmd = cmd->next;
 	}
-	i = 0;
-	while (waitpid(data->fork_pid[i++], &state, 0) > 0 && i < data->cmd_nbr)
-		;
-	if (WIFSIGNALED(state))
-		g_exit_status = WTERMSIG(state) + 128;
-	else if (WIFEXITED(state))
-		g_exit_status = WEXITSTATUS(state);
-	signal(SIGINT, handle_sigint);
+	cmd_signals(data, &state);
 	return (0);
 }

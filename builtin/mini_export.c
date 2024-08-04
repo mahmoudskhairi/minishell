@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_export.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:02 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/03 17:59:40 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:14:58 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	is_exist(t_data *data, char *key, char *value, bool value_flag)
 			tmp = tmp->next;
 			continue ;
 		}
-		else if (!ft_strncmp(tmp->key, key, ft_strlen(key)))
+		else if (!ft_strcmp(tmp->key, key))
 		{
 			if (value_flag)
 			{
@@ -54,7 +54,7 @@ int	is_exist(t_data *data, char *key, char *value, bool value_flag)
 	return (0);
 }
 
-int	check_key(char *arg, bool *flag) // check if this key is valid
+int	check_key(char *arg, bool *flag)
 {
 	int i;
 
@@ -80,46 +80,37 @@ int	check_key(char *arg, bool *flag) // check if this key is valid
 	return (0);
 }
 
-int	mini_export(t_simple_cmd *export, t_data *data)
+void	check_exit_status(bool flag)
+{
+	if (flag == 0)
+		g_exit_status = EXIT_SUCCESS;
+	else
+		g_exit_status = EXIT_FAILURE;
+}
+
+int	mini_export(t_simple_cmd *export, t_data *data, bool flag, bool value_flag)
 {
 	int		i;
 	char	*key;
 	char	*value;
 	t_env	*new;
-	bool	flag;
-	bool	value_flag;
 
-	flag = 0;
 	i = 0;
-	// system("leaks -q minishell");
 	if (!export->cmd[1])
 		print_env(data->env_l);
 	while (export->cmd[++i])
 	{
 		value_flag = get_key_and_value(export->cmd[i], &key, &value);
-		if (is_exist(data, key, value, value_flag)) // pass false
+		if (is_exist(data, key, value, value_flag))
 			continue ;
-		if (check_key(key, &flag)) // check bug of env without = " a= != a"
+		if (check_key(key, &flag) && flag == 1)
 		{
-			// printf("test\n");
-			if (flag == 1)
-			{
-				ft_putstr_fd("export : `", 2);
-				ft_putstr_fd(export->cmd[i], 2);
-				ft_putstr_fd("\': not a valid identifier\n", 2);
-			}
+			print_error("export", ": not a valid identifier\n");
 			continue ;
 		}
-		// free(key);
-		// free(value);
 		new = env_new_node(key, value);
 		new->value_falg = value_flag;
 		env_add_back(&data->env_l, new);
 	}
-	// system("leaks -q minishell");
-	if (flag == 0)
-		g_exit_status = EXIT_SUCCESS;
-	else
-		g_exit_status = EXIT_FAILURE;
 	return (0);
 }
