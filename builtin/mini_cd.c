@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_cd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:37 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/05 11:40:12 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:33:24 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,14 @@ int	get_current_dir(t_env *env, char *pwd_type, char *current_dir)
 int	get_home_env(t_env *env_l)
 {
 	char	*home_env;
+	bool	home_flag;
 
+	home_flag = false;
 	while (env_l)
 	{
 		if (!ft_strcmp(env_l->key, "HOME"))
 		{
+			home_flag = true;
 			home_env = ft_strdup(env_l->value);
 			if (chdir(home_env) == -1)
 			{
@@ -57,7 +60,8 @@ int	get_home_env(t_env *env_l)
 		}
 		env_l = env_l->next;
 	}
-	ft_printf_error("minishell: cd: HOME not set\n");
+	if (!home_flag)
+		ft_printf_error("minishell: cd: HOME not set\n");
 	return (0);
 }
 

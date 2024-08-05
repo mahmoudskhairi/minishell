@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:05:09 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/05 11:33:00 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 13:16:39 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	cmd_signals(t_data *data, int *state)
 		g_exit_status = WTERMSIG(*state) + 128;
 	else if (WIFEXITED(*state))
 		g_exit_status = WEXITSTATUS(*state);
-	// signal(SIGINT, handle_sigint);
+	signal(SIGINT, handle_sigint);
 }
 
 int	execute_cmd(t_simple_cmd *cmd, t_data *data)

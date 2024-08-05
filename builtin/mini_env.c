@@ -6,11 +6,13 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:29:16 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/05 11:20:17 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:33:55 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
+
+extern int	g_exit_status;
 
 bool	get_key_and_value(char *env, char **key, char **value)
 {
@@ -55,7 +57,10 @@ int	mini_env(t_data *data)
 	t_env	*tmp;
 
 	if (!data->env_l)
-		return (0);
+	{
+		g_exit_status = EXIT_SUCCESS;
+		return (g_exit_status);
+	}
 	change_env_value(data->env_l, "_", "builtin_mini_env", true);
 	tmp = data->env_l;
 	while (tmp)
@@ -64,5 +69,6 @@ int	mini_env(t_data *data)
 			printf("%s=%s\n", tmp->key, tmp->value);
 		tmp = tmp->next;
 	}
-	return (0);
+	g_exit_status = EXIT_SUCCESS;
+	return (g_exit_status);
 }

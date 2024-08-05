@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:25 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/05 11:25:05 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:31:48 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	delete_env(t_env **env_l, char *var)
 	}
 }
 
-
 int	mini_unset(t_env **env_l, char **cmd)
 {
 	int		i;
@@ -40,7 +39,7 @@ int	mini_unset(t_env **env_l, char **cmd)
 	g_exit_status = EXIT_SUCCESS;
 	while (cmd && cmd[++i])
 	{
-		if (check_key(cmd[i], &flag))//check it
+		if (check_key(cmd[i], &flag))
 		{
 			print_error("unset", ": not a valid identifier\n");
 			g_exit_status = EXIT_FAILURE;

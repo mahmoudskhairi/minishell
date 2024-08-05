@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_export.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:02 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/05 11:41:06 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:28:21 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,13 @@ int	mini_export(t_simple_cmd *export, t_data *data, bool flag, bool value_flag)
 			continue ;
 		if (check_key(key, &flag) && flag == 1)
 		{
-			print_error("export", ": not a valid identifier\n");
+			ft_printf_error("minishell: `%s': not a valid identifier\n", key);
 			continue ;
 		}
 		new = env_new_node(key, value);
 		new->value_falg = value_flag;
 		env_add_back(&data->env_l, new);
 	}
-	return (0);
+	check_exit_status(flag);
+	return (g_exit_status);
 }

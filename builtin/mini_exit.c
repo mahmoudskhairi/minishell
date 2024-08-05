@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:15:02 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/05 09:27:29 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:33:37 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	check_args(char **cmd)
 		exit(g_exit_status);
 	if (is_number(cmd[1]))
 	{
-		ft_printf_error("minishell: exit: %s: numeric argument required\n", cmd[1]);
+		ft_printf_error("minishell: exit: %s: numeric argument required\n",
+			cmd[1]);
 		exit(255);
 	}
 	if (cmd[1] && cmd[2])

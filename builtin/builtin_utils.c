@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:59:01 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/05 11:18:14 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:32:53 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	env_delone(t_env **head, t_env *node)
 		{
 			free(node);
 			*head = NULL;
-			return;
+			return ;
 		}
 		if (!node->prev)
 		{
