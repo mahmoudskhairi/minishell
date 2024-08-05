@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:15:02 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 16:18:03 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 09:27:29 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ int	is_number(char *str)
 int	check_args(char **cmd)
 {
 	if (!cmd[1])
-		exit(0);
+		exit(g_exit_status);
 	if (is_number(cmd[1]))
 	{
-		dprintf(2, " numeric argument required\n");
+		ft_printf_error("minishell: exit: %s: numeric argument required\n", cmd[1]);
 		exit(255);
 	}
 	if (cmd[1] && cmd[2])
 	{
-		dprintf(2, " too many arguments\n");
+		ft_printf_error("minishell: exit: too many arguments\n", cmd[1]);
 		g_exit_status = EXIT_FAILURE;
 		return (EXIT_FAILURE);
 	}
@@ -54,11 +54,11 @@ int	mini_exit(char **cmd)
 {
 	int	check_errors;
 
-	printf("exit\n");
+	// printf("exit\n");
 	check_errors = check_args(cmd);
 	if (check_errors)
 		return (1);
 	g_exit_status = ft_atoi(cmd[1]);
 	exit(g_exit_status);
-	return (0);
+	return (g_exit_status);
 }

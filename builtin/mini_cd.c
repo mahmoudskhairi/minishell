@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:37 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 16:17:20 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 20:22:35 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	get_home_env(t_env *env_l)
 
 	while (env_l)
 	{
-		if (!strcmp(env_l->key, "HOME"))
+		if (!ft_strcmp(env_l->key, "HOME"))
 		{
 			home_env = ft_strdup(env_l->value);
 			if (chdir(home_env) == -1)

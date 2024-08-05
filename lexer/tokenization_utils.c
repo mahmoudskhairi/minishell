@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 11:47:11 by mskhairi          #+#    #+#             */
-/*   Updated: 2024/08/03 17:13:14 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:10:26 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ int	set_env_item(t_item **ptr2head, char *str, int i)
 {
 	if (is_token(str[i + 1]) || !str[i + 1])
 		add_back_items(ptr2head, new_item(str, ++i, WORD, GENERAL));
-	else if (str[++i] == '?' || (str[i] >= '0' && str[i] <= '9'))
+	else if (str[++i] == '?' || (str[i] >= '0' && str[i] <= '9')
+		|| str[i] == '@')
 		add_back_items(ptr2head, new_item(str, ++i, ENV, GENERAL));
 	else
 	{
 		i++;
-		while (str[i] && !is_token(str[i]))
+		while (str[i] && !is_token(str[i]) && (ft_isalnum(str[i])
+				|| str[i] == '_'))
 			i++;
 		add_back_items(ptr2head, new_item(str, i, ENV, GENERAL));
 	}
@@ -52,15 +54,28 @@ int	set_redin_item(t_item **ptr2head, char *str, int i)
 	return (i);
 }
 
-int	handle_double_qout(t_item **ptr2head, char *str, int i)
+int	handle_qout(t_item **ptr2head, char *str, int i, int flag)
 {
-	if (str[i + 1] == DOUBLE_QUOTE)
+	if (flag)
 	{
-		i = i + 2;
-		add_back_items(ptr2head, new_item("", 1, WORD, GENERAL));
+		if (str[i + 1] == DOUBLE_QUOTE)
+		{
+			i = i + 2;
+			add_back_items(ptr2head, new_item("", 1, WORD, GENERAL));
+		}
+		else
+			add_back_items(ptr2head, new_item(str, ++i, DOUBLE_QUOTE, GENERAL));
 	}
 	else
-		add_back_items(ptr2head, new_item(str, ++i, DOUBLE_QUOTE, GENERAL));
+	{
+		if (str[i + 1] == QOUTE)
+		{
+			i = i + 2;
+			add_back_items(ptr2head, new_item("", 1, WORD, GENERAL));
+		}
+		else
+			add_back_items(ptr2head, new_item(str, ++i, QOUTE, GENERAL));
+	}
 	return (i);
 }
 
@@ -71,9 +86,9 @@ int	set_token_items(t_item **ptr2head, char *str, int i)
 	else if (str[i] == NEW_LINE)
 		add_back_items(ptr2head, new_item(str, ++i, NEW_LINE, GENERAL));
 	else if (str[i] == QOUTE)
-		add_back_items(ptr2head, new_item(str, ++i, QOUTE, GENERAL));
+		i += handle_qout(ptr2head, str, i, 0);
 	else if (str[i] == DOUBLE_QUOTE)
-		i += handle_double_qout(ptr2head, str, i);
+		i += handle_qout(ptr2head, str, i, 1);
 	else if (str[i] == ESCAPE)
 		add_back_items(ptr2head, new_item(str, ++i, ESCAPE, GENERAL));
 	else if (str[i] == PIPE_LINE)

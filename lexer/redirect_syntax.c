@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:38:02 by mskhairi          #+#    #+#             */
-/*   Updated: 2024/08/03 17:15:29 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 09:43:12 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ int	is_alone(t_item *lst)
 	{
 		return (0);
 	}
+	else if (tmp->type == PIPE_LINE && !tmp->prev)
+		return (0);
 	return (1);
 }

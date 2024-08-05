@@ -6,7 +6,7 @@
 #    By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/09 11:21:31 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/07/30 13:22:41 by mskhairi         ###   ########.fr        #
+#    Updated: 2024/08/05 09:20:03 by mskhairi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ ft_substr.c \
 ft_tolower.c \
 ft_toupper.c \
 ft_free.c\
+ft_printf_error.c\
 
 OBJ = ${SRC:.c=.o}
 NAME = libft.a

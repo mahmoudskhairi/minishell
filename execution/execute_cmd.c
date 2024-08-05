@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:05:09 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 17:19:54 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/04 19:46:55 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ char	*cmd_exist(char *cmd, char *cmd_name, char **path)
 	char	*full_path;
 
 	is_path = false;
-	if (!path)
-		return (NULL);
 	if (cmd && !ft_strchr(cmd, '/'))
 	{
 		full_path = check_full_path(cmd, path);
@@ -94,7 +92,7 @@ void	cmd_signals(t_data *data, int *state)
 		g_exit_status = WTERMSIG(*state) + 128;
 	else if (WIFEXITED(*state))
 		g_exit_status = WEXITSTATUS(*state);
-	signal(SIGINT, handle_sigint);
+	// signal(SIGINT, handle_sigint);
 }
 
 int	execute_cmd(t_simple_cmd *cmd, t_data *data)

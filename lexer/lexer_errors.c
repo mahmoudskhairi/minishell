@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:25:21 by mskhairi          #+#    #+#             */
-/*   Updated: 2024/08/04 15:57:53 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:09:42 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern int	g_exit_status;
 
 void	ft_print_error(void)
 {
-	ft_putendl_fd("minihell: syntax error", 2);
+	ft_putendl_fd("minishell: syntax error", 2);
 }
 
 int	check_quot(t_item *lst, char c)
@@ -44,10 +44,18 @@ int	check_quot_error(t_item *lst)
 
 int	lexer_errors(t_item **lst)
 {
+	char	*str;
+
+	str = "unexpected EOF while looking for matching";
 	if (!check_redirections(lst) || !check_pipes(lst, NULL)
 		|| !check_quot_error(*lst))
 	{
-		ft_print_error();
+		if (((*lst)->type == HERE_DOC && (*lst)->next)
+			|| ((*lst)->type == DOUBLE_QUOTE && !(*lst)->next)
+			|| ((*lst)->type == QOUTE && !(*lst)->next))
+			ft_printf_error("minishell: %s\n", str);
+		else
+			ft_print_error();
 		g_exit_status = 258;
 		return (1);
 	}
