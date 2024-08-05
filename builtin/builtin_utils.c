@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:59:01 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/05 11:18:14 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/05 12:13:20 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	env_delone(t_env **head, t_env *node)
 		{
 			free(node);
 			*head = NULL;
-			return;
+			return ;
 		}
 		if (!node->prev)
 		{

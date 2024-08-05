@@ -20,7 +20,7 @@ t_cmd_limits	*new_limit(t_item *start);
 t_cmd_limits	*last_limit(t_cmd_limits *lst);
 t_cmd_limits	*set_cmd_limits(t_item *head);
 t_item			*skip_other_types(t_item *tmp);
-void			expander(t_env *env_l, t_item *list, char	*tmp);
+void			expander(t_env *env_l, t_item *list, char *tmp);
 
 t_simple_cmd	*new_cmd_node(t_cmd_limits *cmd);
 int				cmd_number(t_cmd_limits *cmd);

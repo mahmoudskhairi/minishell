@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:15:02 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/05 09:27:29 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 12:15:54 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	check_args(char **cmd)
 		exit(g_exit_status);
 	if (is_number(cmd[1]))
 	{
-		ft_printf_error("minishell: exit: %s: numeric argument required\n", cmd[1]);
+		ft_printf_error("minishell: exit: %s: numeric argument required\n",
+			cmd[1]);
 		exit(255);
 	}
 	if (cmd[1] && cmd[2])
