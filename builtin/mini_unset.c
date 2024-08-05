@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_unset.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:25 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 16:43:22 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:25:05 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,39 @@
 
 extern int	g_exit_status;
 
-int	mini_unset(t_env **env_l, char **cmd)
+void	delete_env(t_env **env_l, char *var)
 {
 	t_env	*tmp;
+
+	tmp = *env_l;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->key, var))
+		{
+			env_delone(env_l, tmp);
+			return ;
+		}
+		tmp = tmp->next;
+	}
+}
+
+
+int	mini_unset(t_env **env_l, char **cmd)
+{
 	int		i;
+	bool	flag;
 
 	i = 0;
-	tmp = *env_l;
-	while (cmd[++i])
-	{
-		while (tmp)
-		{
-			if (!ft_strncmp(tmp->key, cmd[i], ft_strlen(tmp->key)))
-			{
-				env_delone(env_l, tmp);
-				return (EXIT_SUCCESS);
-			}
-			tmp = tmp->next;
-		}
-	}
 	g_exit_status = EXIT_SUCCESS;
-	return (EXIT_SUCCESS);
+	while (cmd && cmd[++i])
+	{
+		if (check_key(cmd[i], &flag))//check it
+		{
+			print_error("unset", ": not a valid identifier\n");
+			g_exit_status = EXIT_FAILURE;
+			continue ;
+		}
+		delete_env(env_l, cmd[i]);
+	}
+	return (g_exit_status);
 }
