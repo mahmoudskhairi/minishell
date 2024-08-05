@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:27:32 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/05 13:10:50 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:35:50 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*env_search(t_env *env_l, t_item *env_node)
 
 void	expander(t_env *env_l, t_item *list, char *tmp)
 {
-	int		flag;
+	int	flag;
 
 	flag = 0;
 	while (list)
