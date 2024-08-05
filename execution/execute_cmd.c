@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:05:09 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 17:19:54 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:21:20 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ char	*cmd_exist(char *cmd, char *cmd_name, char **path)
 	char	*full_path;
 
 	is_path = false;
-	if (!path)
-		return (NULL);
 	if (cmd && !ft_strchr(cmd, '/'))
 	{
 		full_path = check_full_path(cmd, path);

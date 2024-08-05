@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:29:16 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 16:17:32 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:20:17 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_env	*env_list(char **env)
 	char	*key;
 	char	*value;
 
+	if (!env || !*env)
+		return (NULL);
 	get_key_and_value(env[0], &key, &value);
 	head = env_new_node(key, value);
 	head->value_falg = true;
@@ -52,6 +54,8 @@ int	mini_env(t_data *data)
 {
 	t_env	*tmp;
 
+	if (!data->env_l)
+		return (0);
 	change_env_value(data->env_l, "_", "builtin_mini_env", true);
 	tmp = data->env_l;
 	while (tmp)

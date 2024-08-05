@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:26:58 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 17:19:40 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 10:26:53 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		mini_pwd(void);
 int		mini_cd(t_env *env, char **cmd);
 int		mini_exit(char **cmd);
 int		is_exist(t_data *data, char *key, char *value, bool value_flag);
+int		check_key(char *arg, bool *flag);
 void	change_env_value(t_env *env_l, char *key, char *value, bool value_flag);
 
 t_env	*env_last(t_env *node);
