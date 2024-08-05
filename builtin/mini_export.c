@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:02 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 17:21:57 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:41:06 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_env(t_env *env_l)
 		if (env_l->value_falg)
 			printf("declare -x %s=\"%s\"\n", env_l->key, env_l->value);
 		else
-			printf("declate -x %s\n", env_l->key);
+			printf("declare -x %s\n", env_l->key);
 		env_l = env_l->next;
 	}
 }

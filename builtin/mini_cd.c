@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:31:37 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/08/04 20:22:35 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:40:12 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	get_home_env(t_env *env_l)
 		}
 		env_l = env_l->next;
 	}
+	ft_printf_error("minishell: cd: HOME not set\n");
 	return (0);
 }
 
